@@ -3,8 +3,8 @@ import type { RegisterInput } from '../schemas/auth.schema'
 
 export class AuthService {
   static async register(data: RegisterInput): Promise<User> {
-    const { $kongFetch } = useNuxtApp()
-    return await $kongFetch<User>('/api/auth/register', {
+    const { $apiFetch } = useNuxtApp()
+    return await $apiFetch<User>('/api/auth/register', {
       method: 'POST',
       body: {
         username: data.username,
