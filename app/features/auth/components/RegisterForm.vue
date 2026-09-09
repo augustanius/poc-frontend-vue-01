@@ -66,7 +66,6 @@ const onSubmit = handleSubmit(async (values) => {
           <input
             id="regUsername"
             v-bind="usernameProps"
-            :value="username"
             type="text"
             placeholder="johndoe"
             required
@@ -88,7 +87,6 @@ const onSubmit = handleSubmit(async (values) => {
           <input
             id="regEmail"
             v-bind="emailProps"
-            :value="email"
             type="email"
             placeholder="user@enterprise.io"
             required
@@ -110,7 +108,6 @@ const onSubmit = handleSubmit(async (values) => {
           <input
             id="regPassword"
             v-bind="passwordProps"
-            :value="password"
             :type="showPassword ? 'text' : 'password'"
             placeholder="••••••••••••"
             required
@@ -142,7 +139,6 @@ const onSubmit = handleSubmit(async (values) => {
           <input
             id="regConfirmPassword"
             v-bind="confirmPasswordProps"
-            :value="confirmPassword"
             :type="showPassword ? 'text' : 'password'"
             placeholder="••••••••••••"
             required
