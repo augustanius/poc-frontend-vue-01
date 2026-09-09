@@ -1,12 +1,10 @@
 import type { User } from '../types/auth.types'
 import type { RegisterInput } from '../schemas/auth.schema'
 
-const KONG_BASE_URL = 'http://localhost:8000'
-
 export class AuthService {
   static async register(data: RegisterInput): Promise<User> {
     return await $fetch<User>('/api/auth/register', {
-      baseURL: KONG_BASE_URL,
+      baseURL: useRuntimeConfig().public.kongUrl,
       method: 'POST',
       body: {
         username: data.username,

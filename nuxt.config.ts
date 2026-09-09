@@ -10,6 +10,12 @@ export default defineNuxtConfig({
     port: 3001,
   },
 
+  runtimeConfig: {
+    public: {
+      kongUrl: 'http://localhost:8000',
+    },
+  },
+
   icon: {
     size: '24px',
     customCollections: [],
