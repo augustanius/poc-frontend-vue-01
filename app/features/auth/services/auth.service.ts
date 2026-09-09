@@ -1,6 +1,21 @@
 import type { User } from '../types/auth.types'
+import type { RegisterInput } from '../schemas/auth.schema'
+
+const KONG_BASE_URL = 'http://localhost:8000'
 
 export class AuthService {
+  static async register(data: RegisterInput): Promise<User> {
+    return await $fetch<User>('/api/auth/register', {
+      baseURL: KONG_BASE_URL,
+      method: 'POST',
+      body: {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      },
+    })
+  }
+
   static async getAccessToken(): Promise<string> {
     const data = await $fetch<{ accessToken: string }>('/api/auth/token')
     return data.accessToken

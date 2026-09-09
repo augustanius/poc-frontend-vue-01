@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RegisterForm from '~/features/auth/components/RegisterForm.vue'
+
 definePageMeta({
   layout: 'auth',
   middleware: 'guest',
@@ -30,76 +32,7 @@ useHead({
           <p class="font-body-md text-body-md text-on-surface-variant mt-space-2xs">Register for your secure back-office console</p>
         </div>
 
-        <form class="space-y-space-md" @submit.prevent>
-          <!-- Full name field -->
-          <div>
-            <label class="block font-label-md text-label-md text-on-surface mb-space-2xs" for="fullName">Full Name</label>
-            <div class="relative flex items-center">
-              <Icon
-                name="material-symbols:person"
-                class="absolute left-space-md text-outline pointer-events-none text-body-lg"
-              />
-              <input
-                id="fullName"
-                type="text"
-                placeholder="John Doe"
-                required
-                class="w-full h-10 pl-11 pr-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg placeholder-outline focus:outline-none focus:bg-surface-container-high transition-colors"
-              >
-            </div>
-          </div>
-
-          <!-- Email field -->
-          <div>
-            <label class="block font-label-md text-label-md text-on-surface mb-space-2xs" for="regEmail">Work Identity Email</label>
-            <div class="relative flex items-center">
-              <Icon
-                name="material-symbols:badge"
-                class="absolute left-space-md text-outline pointer-events-none text-body-lg"
-              />
-              <input
-                id="regEmail"
-                type="email"
-                placeholder="user@enterprise.io"
-                required
-                class="w-full h-10 pl-11 pr-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg placeholder-outline focus:outline-none focus:bg-surface-container-high transition-colors"
-              >
-            </div>
-          </div>
-
-          <!-- Password field -->
-          <div>
-            <label class="block font-label-md text-label-md text-on-surface mb-space-2xs" for="regPassword">Password</label>
-            <div class="relative flex items-center">
-              <Icon
-                name="material-symbols:lock"
-                class="absolute left-space-md text-outline pointer-events-none text-body-lg"
-              />
-              <input
-                id="regPassword"
-                type="password"
-                placeholder="••••••••••••"
-                required
-                class="w-full h-10 pl-11 pr-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg placeholder-outline focus:outline-none focus:bg-surface-container-high transition-colors"
-              >
-            </div>
-          </div>
-
-          <!-- Register button -->
-          <button
-            type="submit"
-            class="w-full h-11 mt-space-md bg-primary hover:bg-primary-fixed-dim active:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-lg shadow-xl shadow-primary-container/20 flex items-center justify-center gap-space-xs transition-all"
-          >
-            <Icon name="material-symbols:person-add" class="text-body-lg" />
-            <span>Create Account</span>
-          </button>
-        </form>
-
-        <!-- Login link -->
-        <p class="text-center text-body-sm text-on-surface-variant mt-space-md">
-          Already have an account?
-          <NuxtLink to="/auth/login" class="text-primary hover:underline font-label-md text-label-md">Sign in</NuxtLink>
-        </p>
+        <RegisterForm />
       </div>
     </div>
   </div>
