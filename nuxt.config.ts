@@ -6,6 +6,10 @@ export default defineNuxtConfig({
     'nuxt-auth-utils',
   ],
 
+  devServer: {
+    port: 3001,
+  },
+
   icon: {
     size: '24px',
     customCollections: [],

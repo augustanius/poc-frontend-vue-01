@@ -4,8 +4,3 @@ export interface User {
   name: string
   role: string
 }
-
-export interface LoginResponse {
-  user: User
-  token: string
-}

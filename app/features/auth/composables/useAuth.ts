@@ -1,18 +1,15 @@
 import { AuthService } from '../services/auth.service'
-import type { LoginInput } from '../schemas/auth.schema'
 
 export function useAuth() {
   const { user, clear: clearSession, fetch: fetchSession } = useUserSession()
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  const login = async (credentials: LoginInput) => {
+  const login = async () => {
     loading.value = true
     error.value = null
     try {
-      await AuthService.login(credentials)
-      await fetchSession()
-      await navigateTo('/dashboard')
+      window.location.href = '/auth/keycloak'
     }
     catch (err: any) {
       error.value = err?.data?.message || 'Authentication failed'
@@ -23,9 +20,27 @@ export function useAuth() {
   }
 
   const logout = async () => {
-    await AuthService.logout()
-    await clearSession()
-    await navigateTo('/auth/login')
+    loading.value = true
+    try {
+      await AuthService.logout()
+      await clearSession()
+      await navigateTo('/auth/login')
+    }
+    catch (err: any) {
+      error.value = err?.data?.message || 'Logout failed'
+    }
+    finally {
+      loading.value = false
+    }
+  }
+
+  const getAccessToken = async (): Promise<string | null> => {
+    try {
+      return await AuthService.getAccessToken()
+    }
+    catch {
+      return null
+    }
   }
 
   return {
@@ -34,5 +49,6 @@ export function useAuth() {
     error,
     login,
     logout,
+    getAccessToken,
   }
 }
